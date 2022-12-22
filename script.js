@@ -1,4 +1,3 @@
-
 /**
  * 
  * Manipulating the DOM exercise.
@@ -15,17 +14,13 @@
 */
 
 /**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-
-/**
  * Define Global Variables
  * 
 */
+// navigation global var
 const navigation = document.getElementById('navbar__list');
+// sections global var
 const sections = document.querySelectorAll('section');
-
 
 /**
  * End Global Variables
@@ -43,24 +38,60 @@ const sections = document.querySelectorAll('section');
 
 // build the nav
 
-const navBuilder = () => {
-  let navUI = "";
+const nav = () => {
 
+  let navUI = '';
+  // looping over all sections for its id and dataset
   sections.forEach(section => {
-    const sectionId = section.id;
+
+    const sectionID = section.id;
     const sectionDataNav = section.dataset.nav;
 
-    navUI += `<li><a class="menu_link" href=${sectionId}">${sectionDataNav}</a></li>`;
-  })
+    navUI += `<li><a class="menu__link" href="#${sectionID}">${sectionDataNav}</a></li>`;
 
+  });
+  // append elements to the navigation
   navigation.innerHTML = navUI;
-}
 
-navBuilder();
+
+};
+
+nav();
+
 // Add class 'active' to section when near top of viewport
 
+// getting the largest value that's less or equal to the number
+const offset = (section) => {
+  return Math.floor(section.getBoundingClientRect().top);
+};
 
-// Scroll to anchor ID using scrollTO event
+// remove the active class
+const removeActive = (section) => {
+  section.classList.remove('your-active-class');
+
+};
+// adding the active class
+const addActive = (conditional, section) => {
+  if (conditional) {
+    section.classList.add('your-active-class');
+
+  };
+};
+
+//implementating the actual function
+
+const sectionActivation = () => {
+  sections.forEach(section => {
+    const elementOffset = offset(section);
+
+    inviewport = () => elementOffset < 100 && elementOffset >= -100;
+
+    removeActive(section);
+    addActive(inviewport(), section);
+  });
+};
+
+window.addEventListener('scroll', sectionActivation);
 
 
 /**
