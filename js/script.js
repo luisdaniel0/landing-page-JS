@@ -7,7 +7,7 @@ const sections = document.querySelectorAll('section');
 
 
 
-
+//navbar
 const nav = () => {
 
   let navBarInterface = '';
