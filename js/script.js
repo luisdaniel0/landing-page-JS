@@ -43,3 +43,7 @@ const setActiveState = () => {
     }
   })
 }
+
+/*RESOURCE LINKS:
+https://knowledge.udacity.com/questions/148631
+https://www.youtube.com/watch?v=MKpZadkuT-0 */
