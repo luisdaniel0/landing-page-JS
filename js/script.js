@@ -34,10 +34,11 @@ const setActiveState = () => {
 
 
     } else {
+       //remove state when its not active
       section.classList.remove('active');
       section.style.removeProperty('background-color')
 
-      //remove state when its not active
+      
     }
   })
 }
