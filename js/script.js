@@ -4,7 +4,7 @@
 const navigationBar = document.querySelector("#navbar__list");
 const sections = document.querySelectorAll("section");
 //empty variable, can't use const because will be re-assigning it later
-let navbarContent = '';
+ let navbarContent = '';
 
 
 //navbar function
