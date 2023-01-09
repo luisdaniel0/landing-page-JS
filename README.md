@@ -9,7 +9,7 @@ Multi-section landing page
  
 
 ## Purpose of project:
--To understand the virtual DOM and how to dynamically add content to a web page via JavaScript.
+- To understand the virtual DOM and how to dynamically add content to a web page via JavaScript.
 
 ## Things I learned: 
 -Dynamically built navigation bar
