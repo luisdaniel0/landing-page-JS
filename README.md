@@ -2,14 +2,15 @@
 Multi-section landing page 
 
 ## Technologies used:
-HTML
-CSS
-JavaScript
+  -HTML
+  -CSS
+  -JavaScript
 
 ### Purpose of project:
-To understand the virtual DOM and how to dynamically add content to a web page via JavaScript.
+  -To understand the virtual DOM and how to dynamically add content to a web page via JavaScript.
 
 ### Things I learned: 
-Dynamically built navigation bar
-Differentiated the section actively being viewed
-When user clicks on a navigation item, item smooth scrolls to the appropiate section rathert than giving you the default jump 
+
+  -Dynamically built navigation bar
+  -Differentiated the section actively being viewed
+  -When user clicks on a navigation item, item smooth scrolls to the appropiate   -section rathert than giving you the default jump 
