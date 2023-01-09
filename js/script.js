@@ -1,73 +1,43 @@
 
 
 //selecting and assigning <li> and <section> from the DOM to variables 
-const navigation = document.getElementById('navbar__list');
-const sections = document.querySelectorAll('section');
+const navigationBar = document.querySelector("#navbar__list");
+const sections = document.querySelectorAll("section");
 
 
+//navbar function
+const navbar = () => {
+  //empty variable, can't use const because will be re-assigning it later
+  let navbarContent = '';
+  //looping through every section and adding HTML via the DOM and string interpolation
+  sections.forEach(section => {
+    navbarContent += `<li><a class="menu__link" href=#${section.id}>${section.dataset.nav}</a></li>`
+  });
 
+  //appending the navigationBar with the navBarcontent
+  navigationBar.innerHTML = navbarContent;
+};
 
-//navbar
-const nav = () => {
+navbar();
 
-  let navBarInterface = '';
-  // looping sections for id and dataset
+window.addEventListener('scroll', function () {
+  setActiveState();
+})
+
+const setActiveState = () => {
   sections.forEach(section => {
 
-    const sectionId = section.id; //targeting the id of every section tag
-    const sectionDatasetNav = section.dataset.nav; //targetting data-nav of every section tag
-
-    navBarInterface += `<li><a class="menu__link" href="#${sectionId}">${sectionDatasetNav}</a></li>`;
-
-  });
-  // appending elements to 'nav__bar' using innerHTML
-  navigation.innerHTML = navBarInterface;
+    if (section.getBoundingClientRect().top <= 150 && section.getBoundingClientRect().bottom >= 150) {
+      //apply active state condition
+      section.classList.add('active');
+      section.style.cssText= 'background-color:red';
 
 
-};
+    } else {
+      section.classList.remove('active');
+      section.style.removeProperty('background-color')
 
-nav();
-
-// Add class 'active' to section when near top of viewport
-
-//basically every section that is in my viewport, an 'active class' will dynamically navigate through it 
-
-// function to get the relative position and size of element
-const posSize = (section) => {
-  return Math.floor(section.getBoundingClientRect().top);
-};
-
-// remove active class
-const noActiveClass = (section) => {
-  section.classList.remove('your-active-class');
-
-  //adds styling to non-active classes, doesn't leave it red
-  section.style.cssText = ('background: linear-gradient(0deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .2) 100%);')
-
-};
-// add active class
-const activeClass = (condition, section) => {
-  if (condition) {
-    section.classList.add('your-active-class');
-
-
-    //adds a red styling to the current active class
-    section.style.cssText = 'background-color: red;'
-
-  };
-};
-
-
-const activateClass = () => {
-  sections.forEach(section => {
-    const elementPosition = posSize(section);
-
-    inviewport = () => elementPosition < 200 && elementPosition >= -200;
-
-    noActiveClass(section);
-    activeClass(inviewport(), section);
-  });
-};
-
-document.addEventListener('scroll', activateClass);
-
+      //remove state when its not active
+    }
+  })
+}
