@@ -3,12 +3,13 @@
 //selecting and assigning <li> and <section> from the DOM to variables 
 const navigationBar = document.querySelector("#navbar__list");
 const sections = document.querySelectorAll("section");
+//empty variable, can't use const because will be re-assigning it later
+let navbarContent = '';
 
 
 //navbar function
 const navbar = () => {
-  //empty variable, can't use const because will be re-assigning it later
-  let navbarContent = '';
+  
   //looping through every section and adding HTML via the DOM and string interpolation
   sections.forEach(section => {
     navbarContent += `<li><a class="menu__link" href=#${section.id}>${section.dataset.nav}</a></li>`
